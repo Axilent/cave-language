@@ -1,0 +1,7 @@
+[{"pk":1,"model":"cavelanguage.Collection","fields":{"name":"Core"}},
+ {"pk":2,"model":"cavelanguage.Collection","fields":{"name":"Data Processing"}},
+ {"pk":3,"model":"cavelanguage.Collection","fields":{"name":"Logic"}},
+
+ {"pk":1,"model":"cavelanguage.Category","fields":{"collection":1,"name":"Data"}},
+ {"pk":2,"model":"cavelanguage.Category","fields":{"collection":1,"name":"Context"}},
+ {"pk":3,"model":"cavelanguage.Category","fields":{"collection":1,"name":"Modes"}}]

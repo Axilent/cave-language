@@ -1,0 +1,6 @@
+Django==1.9.4
+Djax==0.8.6
+python-dateutil==2.5.0
+requests==2.9.1
+Sharrock-Client==0.7.4.1
+six==1.10.0
