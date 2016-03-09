@@ -62,3 +62,26 @@ class Symbol(models.Model,ACEContent):
             'name':'name',
             'url':'url'
         }
+
+class Diagram(models.Model,ACEContent):
+    """
+    A CAVE diagram.
+    """
+    name = models.CharField(max_length=100)
+    symbols = models.ManyToManyField(Symbol,related_name='diagrams')
+    image = models.URLField()
+    download = models.URLField(null=True)
+    
+    def __unicode__(self):
+        return self.name
+
+class Article(models.Model,ACEContent):
+    """
+    An article about CAVE.
+    """
+    title = models.CharField(unique=True,max_length=100)
+    body = models.TextField(blank=True)
+    diagrams = models.ManyToManyField(Diagram,related_name='articles')
+    
+    def __unicode__(self):
+        return self.title
