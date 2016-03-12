@@ -1,0 +1,6 @@
+{{ collection }}
+<ul>
+    {% for symbol in collection.symbols.all %}
+    <li>{{ symbol }}:<img src="{{ symbol.url }}"></li>
+    {% endfor %}
+</ul>

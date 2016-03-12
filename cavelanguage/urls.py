@@ -17,7 +17,10 @@ from django.conf.urls import url, patterns, include
 from django.contrib import admin
 
 urlpatterns = patterns('cavelanguage.views',
-    url(r'^$','home')
+    url(r'^$','home'),
+    url(r'^symbol/(?P<slug>[\w-]+)/$','symbol'),
+    url(r'^collection/(?P<slug>[\w-]+)/$','collection'),
+    url(r'^category/(?P<slug>[\w-]+)/$','category'),
 )
 
 # urlpatterns = [

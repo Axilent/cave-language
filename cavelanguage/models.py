@@ -9,6 +9,7 @@ class Collection(models.Model):
     Overall collection (core, or an extension) of symbols.
     """
     name = models.CharField(unique=True, max_length=100)
+    slug = models.SlugField(unique=True)
     
     def __unicode__(self):
         return self.name
@@ -19,6 +20,7 @@ class Category(models.Model):
     """
     collection = models.ForeignKey(Collection,related_name='categories')
     name = models.CharField(max_length=100)
+    slug = models.SlugField(unique=True)
     
     def __unicode__(self):
         return self.name
@@ -26,14 +28,31 @@ class Category(models.Model):
     class Meta:
         unique_together = (('collection','name'),)
 
+class SymbolCategoryFieldConverter(object):
+    """ 
+    Field converter for symbol categories.
+    """
+    field = 'categories'
+    deferred = True
+    
+    def to_local_model(self,ace_content,ace_field_value,local_model):
+        categories = Category.objects.filter(name__in=ace_field_value)
+        local_model.categories = categories
+        local_model.save()
+        return categories
+    
+    def to_ace(self,local_model):
+        return [category.name for category in local_model.categories.all()]
+
 class Symbol(models.Model,ACEContent):
     """
     A diagram symbol.
     """
     collection = models.ForeignKey(Collection,related_name='symbols')
     name = models.CharField(unique=True, max_length=100)
+    slug = models.SlugField()
     categories = models.ManyToManyField(Category,related_name='symbols')
-    url = models.URLField(null=True)
+    url = models.URLField(null=True,max_length=500)
     
     def __unicode__(self):
         return self.name
@@ -46,36 +65,32 @@ class Symbol(models.Model,ACEContent):
     
     collection_prop = property(_get_collection,_set_collection)
     
-    def _get_categories(self):
-        return [category.name for category in self.categories.all()]
-    
-    def _set_categories(self,category_names):
-        self.categories = Category.objects.filter(name__in=category_names)
-    
-    categories_prop(_get_categories,_set_categories)
-    
     class ACE:
         content_type = 'Symbol'
         field_map = {
             'collection':'collection_prop',
-            'categories':'categories_prop',
+            'categories':SymbolCategoryFieldConverter(),
             'name':'name',
-            'url':'url'
+            'url':'url',
+            'slug':'slug',
         }
 
-class Diagram(models.Model,ACEContent):
+# TODO make ACE content
+class Diagram(models.Model):
     """
     A CAVE diagram.
     """
     name = models.CharField(max_length=100)
     symbols = models.ManyToManyField(Symbol,related_name='diagrams')
-    image = models.URLField()
-    download = models.URLField(null=True)
+    image = models.URLField(max_length=500)
+    download = models.URLField(null=True,max_length=500)
     
     def __unicode__(self):
         return self.name
 
-class Article(models.Model,ACEContent):
+
+# TODO Make ACE content
+class Article(models.Model):
     """
     An article about CAVE.
     """

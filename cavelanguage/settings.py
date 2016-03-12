@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/1.9/ref/settings/
 """
 
 import os
+import sys
+import dj_database_url
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -23,9 +25,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '(a+jy((!m)316ce*y)y&_75vvc76vw((wuw$u-5y11&bfkl(@5'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = True if os.environ.get('CL_DEBUG',None) else False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['cavelanguage.herokuapp.com']
 
 
 # Application definition
@@ -37,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'djax',
+    'cavelanguage',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -74,12 +78,17 @@ WSGI_APPLICATION = 'cavelanguage.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+if os.environ.get('CL_RUNLOCAL',None):
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': os.environ.get('DB_NAME','cavelanguage'),
+            'USER': os.environ.get('DB_USER',''),
+            'PASSWORD': os.environ.get('DB_PASSWORD',''),
+        }
     }
-}
+else:
+    DATABASES['default'] = dj_database_url.config()
 
 
 # Password validation
@@ -112,10 +121,52 @@ USE_I18N = True
 
 USE_L10N = True
 
-USE_TZ = True
+USE_TZ = False
 
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'site_media', 'static')
+local_static = os.environ.get('CL_LOCALSTATIC',None)
+
+# Storage
+if not local_static:
+    DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+    STATICFILES_STORAGE = DEFAULT_FILE_STORAGE
+    AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID', '')
+    AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY', '')
+    AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME','')
+    STATIC_HOST = os.environ.get('CL_STATIC_HOST','//s3.amazonaws.com')
+    STATIC_URL = '%s/%s/' % (STATIC_HOST,AWS_STORAGE_BUCKET_NAME)
+
+AXILENT_API_KEY = os.environ.get('AXILENT_API_KEY','')
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'simple': {
+            'format': '%(levelname)s %(message)s',
+        },
+    },
+    'handlers': {
+        'console': {
+            'level': 'DEBUG',
+            'formatter': 'simple',
+            'class': 'logging.StreamHandler'
+        },
+    },
+    'loggers': {
+        'django.request': {
+            'handlers': ['console'],
+            'level': 'DEBUG',
+        },
+        'djax': {
+            'handlers': ['console'],
+            'level': 'DEBUG',
+        }
+    }
+}
+

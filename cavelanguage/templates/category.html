@@ -1,0 +1,6 @@
+{{ category }}
+<ul>
+    {% for symbol in category.symbols.all %}
+    <li>{{ symbol }}:<img src="{{ symbol.url }}"></li>
+    {% endfor %}
+</ul>
