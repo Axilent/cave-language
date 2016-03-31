@@ -1,1 +1,47 @@
-HOME PAGE
+{% extends "base.html" %}
+
+{% load staticfiles %}
+
+{% block content %}
+{% include 'nav.html' %}
+<div class="jumbotron">
+    <h1>CAVE Language</h1>
+    <h3>Conversational Architecture Visual Expression Language</h3>
+</div>
+<hr/>
+<p class="lead"><strong>CAVE Language</strong> is a whiteboard, napkin and presentation -friendly visual design language for describing the behavior of <strong>Contextual Applications</strong>. Contextual Applications react to the context of the user - their specific circumstances - and dynamically respond according to that context.</p>
+<p></p>
+<div class="media">
+    <div class="media-left">
+        <img src="{% static 'images/language-flow.png' %}">
+    </div>
+    <div class="media-body">
+        <h3>Goals</h3>
+        <p>CAVE Language was designed with the following goals in mind:</p>
+        <h4>Whiteboard / Napkin / Presentation Friendly</h4>
+        <p>CAVE should adapt well to different formats as needed. It should look fine in highly polished documents or presentations in the boardroom, but at the same time be useful written on the back of a napkin. It should be practical to write CAVE drawings on a whiteboard while discussing application design. In other words, precise usage of CAVE is okay, but sloppy usage of CAVE is also okay.</p>
+        <h4>Methodology Neutral</h4>
+        <p>CAVE is a language, not a methodology. CAVE isn't prescribing best practices for contextual application development, it's just providing a means of expressing them. Additionally, nothing in CAVE should prevent you from using your favorite methodology, nor should it interfere with other existing practices such as agile development or user-centered design.</p>
+        <h4>Scales Up, Scales Down</h4>
+        <p>CAVE should be suitable for sparing use, to describe a simple idea with minimal effort. At the same time you should also be able to use CAVE extensively, to describe large, complex systems, without encountering limitations in the language.</p>
+        <h4>Useful Across Disciplines</h4>
+        <p>Contextual applications are built by teams of people with different skill sets. CAVE should serve everyone on the team, allowing each member to understand the application in the way they specifically need in order to do their job. CAVE drawings should connect the team, effectively acting as a canonical representation of the application.</p>
+    </div>
+</div>
+<hr/>
+<h3>Areas of Concern</h3>
+<div class="media">
+    <div class="media-body">
+        <p>CAVE language is primarily concerned with three areas:</p>
+        <h4>Data</h4>
+        <p>A contextual app has to deal with the collection, acquisition and processing of data. CAVE Language data symbols show data and its origins, be they are sensors, external data sources or user input. A CAVE data drawing can answer the question, "Where does this data come from?"</p>
+        <h4>Context</h4>
+        <p>From raw data, meaningful context can be inferred. Context builds on data and, through inferences, creates insights into user context. For example, a CAVE context drawing might show how an inference maps user behavioral data to an insight about a user's affinity.</p>
+        <h4>Modal Response</h4>
+        <p>A contextual application will observe user context and respond in a specific way. CAVE modal response drawings can show how user context triggers a corresponding modal response.</p>
+    </div>
+    <div class="media-right">
+        <img src="{% static 'images/areas-of-concern.png' %}">
+    </div>
+</div>
+{% endblock content %}
