@@ -1,1 +1,38 @@
-<img src="{{ symbol.url }}">{{ symbol }}
+{% extends "base.html" %}
+
+{% load staticfiles %}
+
+{% block content %}
+{% include 'nav.html' %}
+<ol class="breadcrumb">
+  <li><a href="/">Home</a></li>
+  <li><a href="/symbols/">Symbol Library</a></li>
+  <li>{{ symbol.collection.name }}</li>
+  <li class="active">{{ symbol.name }}</li>
+</ol>
+<div class="media">
+    <div class="media-left">
+        <img class="media-object" src="{{ symbol.url }}">
+    </div>
+    <div class="media-body">
+        <h1>{{ symbol.name }}</h1>
+        <table class="table">
+            <tr>
+                <td>Collection</td>
+                <td><strong>{{ symbol.collection.name }}</strong></td>
+            </tr>
+            {% if symbol.categories.exists %}
+            <tr>
+                <td>Categories</td>
+                <td>
+                    {% for category in symbol.categories.all %}
+                    <strong>{{ category.name }}</strong><br/>
+                    {% endfor %}
+                </tr>
+            </tr>
+            {% endif %}
+        </table>
+        {{ symbol.description|safe }}
+    </div>
+</div>
+{% endblock content %}
