@@ -1,0 +1,14 @@
+<table class="table table-striped">
+    <tr>
+        <th>Icon</th>
+        <th>Symbol</th>
+        <th>Description</th>
+    </tr>
+    {% for symbol in symbols %}
+    <tr>
+        <td><img src="{{ symbol.url }}"></td>
+        <td><a href="/symbol/{{ symbol.slug }}/"><strong>{{ symbol.name }}</strong></a></td>
+        <td>{{ symbol.description|safe }}</td>
+    </tr>
+    {% endfor %}
+</table>

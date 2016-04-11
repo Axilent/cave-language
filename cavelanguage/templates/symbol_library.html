@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% load staticfiles %}
+
+{% block content %}
+{% include 'nav.html' %}
+<h1>Symbol Library</h1>
+<p class="lead">The <strong>CAVE Language</strong> library is divided between the Core library and a series of extensions. The extensions are meant for more specialized purposes, and are kept out of the core because they are less likely to be of use to everyone.</p>
+<hr/>
+<h2>Core Collection</h2>
+<h3>Connector Symbols</h3>
+<p>Connectors are used to connect symbols together.  They are simple lines and come in two flavors, associative and causal. Connectors may optionally be labeled in order to clarify their meaning.</p>
+{% with connector_symbols as symbols %}
+{% include 'symbol_table.html' %}
+{% endwith %}
+<h3>Data Symbols</h3>
+<p>Data symbols have to do with the identification, sourcing and handling of data.</p>
+{% with data_symbols as symbols %}
+{% include 'symbol_table.html' %}
+{% endwith %}
+<h3>Context Symbols</h3>
+<p>Context symbols have to do with the extraction of meaningful knowledge about a user.  Generally context is inferred from data.</p>
+{% with context_symbols as symbols %}
+{% include 'symbol_table.html' %}
+{% endwith %}
+<h3>Conditionals</h3>
+<p>Conditions and assertions are more general ways to express both requirements and outcomes for inferences.</p>
+{% with conditional_symbols as symbols %}
+{% include 'symbol_table.html' %}
+{% endwith %}
+<h3>Modes</h3>
+<p>A modal response is comprised of mode elements, which describe different aspects of that modal response.</p>
+{% with mode_symbols as symbols %}
+{% include 'symbol_table.html' %}
+{% endwith %}
+<h3>Containers</h3>
+<p>Containers group several elements together, allowing them to be treated as a set.  Containers come in two forms, Optional (OR containers) or Mandatory (AND containers). Note that it is not always necessary to explicitly detail a container just to show a set of elements.  Containers are used to clarify the nature of the element set, if the nature of the set is already clear then they are unnecessary.</p>
+{% with container_symbols as symbols %}
+{% include 'symbol_table.html' %}
+{% endwith %}
+{% endblock content %}

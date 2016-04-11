@@ -53,6 +53,7 @@ class Symbol(models.Model,ACEContent):
     slug = models.SlugField()
     categories = models.ManyToManyField(Category,related_name='symbols')
     url = models.URLField(null=True,max_length=500)
+    description = models.TextField(blank=True,null=True)
     
     def __unicode__(self):
         return self.name
@@ -73,6 +74,7 @@ class Symbol(models.Model,ACEContent):
             'name':'name',
             'url':'url',
             'slug':'slug',
+            'description':'description',
         }
 
 # TODO make ACE content

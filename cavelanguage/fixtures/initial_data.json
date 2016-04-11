@@ -4,4 +4,9 @@
 
  {"pk":1,"model":"cavelanguage.Category","fields":{"collection":1,"name":"Data","slug":"data"}},
  {"pk":2,"model":"cavelanguage.Category","fields":{"collection":1,"name":"Context","slug":"context"}},
- {"pk":3,"model":"cavelanguage.Category","fields":{"collection":1,"name":"Modes","slug":"modes"}}]
+ {"pk":3,"model":"cavelanguage.Category","fields":{"collection":1,"name":"Modes","slug":"modes"}},
+ {"pk":4,"model":"cavelanguage.Category","fields":{"collection":1,"name":"Connectors","slug":"connectors"}},
+ {"pk":5,"model":"cavelanguage.Category","fields":{"collection":1,"name":"Containers","slug":"containers"}},
+ {"pk":6,"model":"cavelanguage.Category","fields":{"collection":1,"name":"Abstractions","slug":"abstractions"}},
+ {"pk":7,"model":"cavelanguage.Category","fields":{"collection":1,"name":"Hardware","slug":"hardware"}},
+ {"pk":8,"model":"cavelanguage.Category","fields":{"collection":1,"name":"Conditionals","slug":"conditionals"}}]

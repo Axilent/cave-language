@@ -18,6 +18,7 @@ from django.contrib import admin
 
 urlpatterns = patterns('cavelanguage.views',
     url(r'^$','home'),
+    url(r'^symbols/$','symbol_library'),
     url(r'^symbol/(?P<slug>[\w-]+)/$','symbol'),
     url(r'^collection/(?P<slug>[\w-]+)/$','collection'),
     url(r'^category/(?P<slug>[\w-]+)/$','category'),
