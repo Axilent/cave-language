@@ -78,6 +78,7 @@ WSGI_APPLICATION = 'cavelanguage.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
 
+DATABASES = {}
 if os.environ.get('CL_RUNLOCAL',None):
     DATABASES = {
         'default': {
