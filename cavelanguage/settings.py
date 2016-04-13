@@ -27,7 +27,7 @@ SECRET_KEY = '(a+jy((!m)316ce*y)y&_75vvc76vw((wuw$u-5y11&bfkl(@5'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True if os.environ.get('CL_DEBUG',None) else False
 
-ALLOWED_HOSTS = ['cavelanguage.herokuapp.com']
+ALLOWED_HOSTS = ['cavelanguage.herokuapp.com','www.cavelanguage.org','www.cavelanguage.com']
 
 
 # Application definition
