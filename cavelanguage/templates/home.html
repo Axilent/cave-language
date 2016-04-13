@@ -47,4 +47,27 @@
         <img src="{% static 'images/areas-of-concern.png' %}">
     </div>
 </div>
+<hr/>
+<h2>What Is CAVE Language and Why Does It Exist?</h2>
+<p>We are witnessing the rise of contextual applications. In the past, applications, whether they were websites, desktop applications or otherwise, operated without regard to the circumstances of their users. Today, however, we are seeing a new generation of applications that react and respond dynamically to the context and circumstances of their users.</p>
+<p>Contextual applications have the potential to interact with users in a more effective, efficient and authentic manner than ever before. Additionally, contextual applications can leverage a wider variety of user interfaces (such as voice and gestural control).</p>
+<p>This trend towards contextual applications is driven by five forces identified by Robert Scoble and Shel Israel in their 2013 book The Age of Context.</p>
+<h3>Five Forces</h3>
+<h4>Mobile Devices</h4>
+<p>The proliferation of mobile devices has embedded computing capabilities into a wide variety of real-world contexts. Using mobile phones, tablet computers, smart watches, Google Glass, etc., we are now building applications meant to be used while shopping, jogging, driving and so on. This is a far cry from the uniformity of application context historically, where an application designer could assume that the user was sitting at a desk in front of a computer.</p>
+<h4>Social Media</h4>
+<p>The widespread adoption of social media such as Facebook, Twitter, LinkedIn and so forth has created a massive graph of human interaction data, enabling introspection into various behaviors and affinities of individuals as they interact with their peers. This data can form the basis of insights about users, to which applications can strategically respond.</p>
+<h4>Data</h4>
+<p>The reduced cost of data collection and storage, combined with new techniques for analyzing data, have made automated insights into user circumstances, preferences and behavior more practical than ever before. The availability of user data makes dynamic responses by applications possible.</p>
+<h4>Sensors</h4>
+<p>A significant force accompanying the proliferation of data and mobile devices is the ubiquity of sensors. GPS, micro-location, motion sensors, biometric sensors and, of course, cameras, all power the opportunity for passive collection of vast amounts of contextual data (Where is the user? Are they moving? Is their heart beating fast? e.g.) These sensors are becoming increasingly inexpensive, and they are everywhere.</p>
+<h4>Location</h4>
+<p>Knowing a user's physical location is key to understanding their context. Whether a user is at work, at home, in transit, or performing an errand, their location implies much about their context. We now have significant amounts of metadata associated with geographical locations, which can be used to make contextual inferences.</p>
+<h3>The Problem With Contextual Applications</h3>
+<p>A contextual application responds dynamically to user context. While the business case and the technology exists for the building of contextual applications, what is lacking is a design language in which to articulate them. To describe dynamic response to user context there have been various attempts to draft existing design and specification formats, such as heavily annotated wireframes, UML state diagrams and flowcharts, but none of these are optimized for contextual application design. The problem is exacerbated when trying to describe common modal functionality that can be expressed through multiple user interfaces, or when dealing with a purely contextual interface such as voice control, such as Siri or Google Now.</p>
+<p>The lack of a language to articulate contextual applications creates a design bottleneck: the desire and capability to build such applications exists, but there is no way to describe them.</p>
+<h3>The Conversational Metaphor</h3>
+<p>The best way to approach an abstract application design problem is to use a foundational metaphor upon which a system of interaction can be built. Some historical examples of foundational metaphors include the *desktop *metaphor in personal computing, and the web page. While there is nothing intrinsic in a computer operating system that requires the concept of a desktop, nor anything intrinsic in the networked exchange of files that requires the concept of a page, both metaphors are used to build an organizational model in the application designer's mind.</p>
+<p>For contextual applications, the best foundational metaphor is the natural language conversation. A conversation conducted between two individuals is a perfect example of ongoing dynamic response to context. A conversational participant gathers context concerning their counterpart based both on explicitly communicated information as well as inferences that they make based on their counterpart's actions and circumstances. In response to this context, the participant dynamically alters their behavior in real time.</p>
+<p>Describing how an application behaves as a participant in a two-way conversation is the best way to organize and specify the behavior of a contextual application.</p>
 {% endblock content %}
