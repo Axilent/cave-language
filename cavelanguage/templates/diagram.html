@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% load staticfiles %}
+
+{% block content %}
+{% include "nav.html" %}
+<ol class="breadcrumb">
+  <li><a href="/">Home</a></li>
+  <li><a href="/diagrams/">Diagrams</a></li>
+  <li class="active">{{ diagram.name }}</li>
+</ol>
+<h4>Diagram</h4>
+<h1>{{ diagram.name }}</h1>
+<img src="{{ diagram.image }}">
+<hr/>
+<h3><a href="{{ diagram.download }}">Download "{{ diagram.name }}" as PDF</a></h3>
+<hr/>
+{% if diagram.discussion %}
+{{ diagram.discussion|safe }}
+{% endif %}
+<h4>Referenced Symbols</h4>
+<ul class="list-group">
+    {% for symbol in diagram.symbols.all %}
+    <li class="list-group-item"><a href="/symbol/{{ symbol.slug }}/">{{ symbol.name }}</a></li>
+    {% endfor %}
+</ul>
+{% endblock content %}

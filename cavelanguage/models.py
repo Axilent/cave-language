@@ -86,6 +86,7 @@ class Diagram(models.Model,ACEContent):
     symbols = models.ManyToManyField(Symbol,related_name='diagrams')
     image = models.URLField(max_length=500)
     download = models.URLField(null=True,max_length=500)
+    discussion = models.TextField(blank=True,null=True)
     
     def __unicode__(self):
         return self.name
@@ -104,6 +105,7 @@ class Diagram(models.Model,ACEContent):
             'image':'image',
             'download':'download',
             'symbols':M2MFieldConverter('symbols'),
+            'discussion':'discussion',
         }
 
 class Article(models.Model,ACEContent):

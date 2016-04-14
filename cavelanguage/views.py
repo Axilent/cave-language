@@ -2,7 +2,7 @@
 Views for CAVE Language
 """
 from cavelanguage.utils import template
-from cavelanguage.models import Symbol, Collection, Category
+from cavelanguage.models import Symbol, Collection, Category, Diagram
 
 @template('home.html')
 def home(request):
@@ -53,3 +53,18 @@ def category(request,slug):
     """
     cat = Category.objects.get(slug=slug)
     return {'category':cat}
+
+@template('diagram.html')
+def diagram(request,diagram_id,diagram_slug):
+    """
+    Gets the diagram.
+    """
+    diagram = Diagram.objects.get(pk=diagram_id)
+    return {'diagram':diagram,'location':'diagrams'}
+
+@template('diagrams.html')
+def diagrams(request):
+    """
+    Main diagrams page.
+    """
+    return {'location':'diagrams','diagrams':Diagram.objects.all()}
