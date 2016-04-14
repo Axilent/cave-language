@@ -10,9 +10,11 @@
 </ol>
 <h1>Diagrams</h1>
 <p class="lead">This is the repository of CAVE Language diagrams.  Click on any diagram to see it, access a downloadable PDF, and see which symbols have been referenced by it.</p>
+{% if diagrams %}
 <ul class="list-group">
     {% for diagram in diagrams %}
     <li class="list-group-item"><a href="/diagram/{{ diagram.pk }}/{{ diagram.slug }}/">{{ diagram.name }}</a></li>
     {% endfor %}
 </ul>
+{% endif %}
 {% endblock content %}
