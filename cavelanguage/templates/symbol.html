@@ -19,14 +19,14 @@
         <table class="table">
             <tr>
                 <td>Collection</td>
-                <td><strong>{{ symbol.collection.name }}</strong></td>
+                <td>{% ifequal symbol.collection.name 'Core' %}<strong>{{ symbol.collection.name }}</strong>{% else %}<a href="/collection/{{ symbol.collection.slug }}/"><strong>{{ symbol.collection.name }}</strong></a>{% endifequal %}</td>
             </tr>
             {% if symbol.categories.exists %}
             <tr>
                 <td>Categories</td>
                 <td>
                     {% for category in symbol.categories.all %}
-                    <strong>{{ category.name }}</strong><br/>
+                    <a href="/collection/{{ category.collection.slug }}/category/{{ category.slug }}/"><strong>{{ category.name }}</strong></a><br/>
                     {% endfor %}
                 </tr>
             </tr>

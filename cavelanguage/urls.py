@@ -21,7 +21,7 @@ urlpatterns = patterns('cavelanguage.views',
     url(r'^symbols/$','symbol_library'),
     url(r'^symbol/(?P<slug>[\w-]+)/$','symbol'),
     url(r'^collection/(?P<slug>[\w-]+)/$','collection'),
-    url(r'^category/(?P<slug>[\w-]+)/$','category'),
+    url(r'^collection/(?P<collection_slug>[\w-]+)/category/(?P<slug>[\w-]+)/$','category'),
     url(r'^diagram/(?P<diagram_id>\d+)/(?P<diagram_slug>[\w-]+)/$','diagram'),
     url(r'^diagrams/$','diagrams'),
 )

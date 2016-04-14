@@ -47,7 +47,7 @@ def collection(request,slug):
     return {'collection':col}
 
 @template('category.html')
-def category(request,slug):
+def category(request,collection_slug,slug):
     """ 
     Gets the category.
     """
