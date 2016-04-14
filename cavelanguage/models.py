@@ -28,6 +28,7 @@ class Category(models.Model):
     
     class Meta:
         unique_together = (('collection','name'),)
+        ordering = ['name']
 
 class SymbolCategoryFieldConverter(object):
     """ 
@@ -77,6 +78,9 @@ class Symbol(models.Model,ACEContent):
             'slug':'slug',
             'description':'description',
         }
+    
+    class Meta:
+        ordering = ['name']
 
 class Diagram(models.Model,ACEContent):
     """

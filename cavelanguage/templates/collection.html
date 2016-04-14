@@ -1,6 +1,25 @@
-{{ collection }}
-<ul>
-    {% for symbol in collection.symbols.all %}
-    <li>{{ symbol }}:<img src="{{ symbol.url }}"></li>
+{% extends "base.html" %}
+
+{% load staticfiles %}
+
+{% block content %}
+{% include "nav.html" %}
+<ol class="breadcrumb">
+  <li><a href="/">Home</a></li>
+  <li><a href="/symbols/">Symbol Library</a></li>
+  <li class="active">{{ collection.name }}</li>
+</ol>
+<h1>{{ collection.name }}</h1>
+{% if collection.categories.exists %}
+<h3>Categories</h3>
+<ul class="list-group">
+    {% for category in collection.categories.all %}
+    <li class="list-group-item"><a href="/collection/{{ collection.slug }}/category/{{ category.slug }}/">{{ category.name }}</a></li>
     {% endfor %}
 </ul>
+{% endif %}
+<h3>Symbols</h3>
+{% with collection.symbols.all as symbols %}
+{% include 'symbol_table.html' %}
+{% endwith %}
+{% endblock content %}
