@@ -19,7 +19,7 @@
         <table class="table">
             <tr>
                 <td>Collection</td>
-                <td>{% ifequal symbol.collection.name 'Core' %}<strong>{{ symbol.collection.name }}</strong>{% else %}<a href="/collection/{{ symbol.collection.slug }}/"><strong>{{ symbol.collection.name }}</strong></a>{% endifequal %}</td>
+                <td><a href="/collection/{{ symbol.collection.slug }}/"><strong>{{ symbol.collection.name }}</strong></a></td>
             </tr>
             {% if symbol.categories.exists %}
             <tr>

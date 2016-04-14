@@ -44,7 +44,7 @@ def collection(request,slug):
     Gets the collection.
     """
     col = Collection.objects.get(slug=slug)
-    return {'collection':col}
+    return {'collection':col,'location':'symbol_library'}
 
 @template('category.html')
 def category(request,collection_slug,slug):
@@ -52,7 +52,7 @@ def category(request,collection_slug,slug):
     Gets the category.
     """
     cat = Category.objects.get(slug=slug)
-    return {'category':cat}
+    return {'category':cat,'location':'symbol_library'}
 
 @template('diagram.html')
 def diagram(request,diagram_id,diagram_slug):
