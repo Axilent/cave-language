@@ -10,6 +10,9 @@
   <li class="active">{{ collection.name }}</li>
 </ol>
 <h1>{{ collection.name }}</h1>
+{% if collection.description %}
+{{ collection.description|safe }}
+{% endif %}
 {% if collection.categories.exists %}
 <h3>Categories</h3>
 <ul class="list-group">

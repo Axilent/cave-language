@@ -11,6 +11,7 @@ class Collection(models.Model):
     """
     name = models.CharField(unique=True, max_length=100)
     slug = models.SlugField(unique=True)
+    description = models.TextField(blank=True,null=True)
     
     def __unicode__(self):
         return self.name
