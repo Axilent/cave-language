@@ -112,6 +112,9 @@ class Diagram(models.Model,ACEContent):
             'symbols':M2MFieldConverter('symbols'),
             'discussion':'discussion',
         }
+    
+    class Meta:
+        ordering = ['name']
 
 class Article(models.Model,ACEContent):
     """
