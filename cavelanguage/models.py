@@ -2,7 +2,8 @@
 Models for cavelanguage.org.
 """
 from django.db import models
-from djax.content import ACEContent
+from djax.content import ACEContent, M2MFieldConverter
+from django.utils.text import slugify
 
 class Collection(models.Model):
     """
@@ -77,8 +78,7 @@ class Symbol(models.Model,ACEContent):
             'description':'description',
         }
 
-# TODO make ACE content
-class Diagram(models.Model):
+class Diagram(models.Model,ACEContent):
     """
     A CAVE diagram.
     """
@@ -89,10 +89,24 @@ class Diagram(models.Model):
     
     def __unicode__(self):
         return self.name
+    
+    @property
+    def slug(self):
+        """
+        Slug version of diagram name.
+        """
+        return slugify(self.name)
+    
+    class ACE:
+        content_type = 'Diagram'
+        field_map = {
+            'name':'name',
+            'image':'image',
+            'download':'download',
+            'symbols':M2MFieldConverter('symbols'),
+        }
 
-
-# TODO Make ACE content
-class Article(models.Model):
+class Article(models.Model,ACEContent):
     """
     An article about CAVE.
     """
@@ -102,3 +116,11 @@ class Article(models.Model):
     
     def __unicode__(self):
         return self.title
+    
+    class ACE:
+        content_type = 'Article'
+        field_map = {
+            'title':'title',
+            'body':'body',
+            'diagrams':M2MFieldConverter('diagrams')
+        }

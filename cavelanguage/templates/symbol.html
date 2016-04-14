@@ -33,6 +33,13 @@
             {% endif %}
         </table>
         {{ symbol.description|safe }}
+        <hr/>
+        <h4>Diagrams that use {{ symbol.name }}</h4>
+        <ul class="list-group">
+            {% for diagram in symbol.diagrams.all %}
+            <li class="list-group-item"><a href="/diagram/{{ diagram.pk }}/{{ diagram.slug }}/">{{ diagram.name }}</a></li>
+            {% endfor %}
+        </ul>
     </div>
 </div>
 {% endblock content %}
