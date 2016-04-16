@@ -19,9 +19,7 @@
 {{ diagram.discussion|safe }}
 {% endif %}
 <h4>Referenced Symbols</h4>
-<ul class="list-group">
-    {% for symbol in diagram.symbols.all %}
-    <li class="list-group-item"><a href="/symbol/{{ symbol.slug }}/">{{ symbol.name }}</a></li>
-    {% endfor %}
-</ul>
+{% with diagram.symbols.all as symbols %}
+{% include 'symbol_table.html' %}
+{% endwith %}
 {% endblock content %}
