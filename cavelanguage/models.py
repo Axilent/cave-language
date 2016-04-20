@@ -147,3 +147,33 @@ class Article(models.Model,ACEContent):
             'body':'body',
             'diagrams':M2MFieldConverter('diagrams')
         }
+
+class Contributor(models.Model,ACEContent):
+    """
+    A contributor to CAVE.
+    """
+    first_name = models.CharField(blank=True, max_length=100)
+    last_name = models.CharField(blank=True, max_length=100)
+    twitter = models.CharField(blank=True, null=True, max_length=100)
+    website = models.URLField(null=True)
+    bio = models.TextField(blank=True,null=True)
+    pic = models.URLField(null=True,max_length=500)
+    
+    def __unicode__(self):
+        return u'%s %s' % (self.first_name,self.last_name)
+    
+    class ACE:
+        content_type = 'Contributor'
+        field_map = {
+            'first_name':'first_name',
+            'last_name':'last_name',
+            'twitter':'twitter',
+            'website':'website',
+            'bio':'bio',
+            'picture':'pic',
+        }
+    
+    class Meta:
+        ordering = ['last_name']
+
+

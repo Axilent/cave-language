@@ -24,6 +24,7 @@ urlpatterns = patterns('cavelanguage.views',
     url(r'^collection/(?P<collection_slug>[\w-]+)/category/(?P<slug>[\w-]+)/$','category'),
     url(r'^diagram/(?P<diagram_id>\d+)/(?P<diagram_slug>[\w-]+)/$','diagram'),
     url(r'^diagrams/$','diagrams'),
+    url(r'^contributors/$','contributors'),
 )
 
 # urlpatterns = [

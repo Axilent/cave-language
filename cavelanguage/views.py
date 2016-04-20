@@ -2,7 +2,7 @@
 Views for CAVE Language
 """
 from cavelanguage.utils import template
-from cavelanguage.models import Symbol, Collection, Category, Diagram
+from cavelanguage.models import Symbol, Collection, Category, Diagram, Contributor
 
 @template('home.html')
 def home(request):
@@ -68,3 +68,11 @@ def diagrams(request):
     Main diagrams page.
     """
     return {'location':'diagrams','diagrams':Diagram.objects.all()}
+
+@template('contributors.html')
+def contributors(request):
+    """
+    Contributors to CAVE.
+    """
+    return {'location':'contributors','contributors':Contributor.objects.all()}
+

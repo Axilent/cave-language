@@ -4,3 +4,5 @@ img.diagram-image { max-width:1170px; }
 
 .jumbotron h1 { color: blue; }
 .jumbotron h3 { color: blue; }
+
+img.contributor-img { max-width: 100px; }

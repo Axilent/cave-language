@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% load staticfiles %}
+
+{% block content %}
+{% include "nav.html" %}
+<ol class="breadcrumb">
+  <li><a href="/">Home</a></li>
+  <li class="active">Contributors</li>
+</ol>
+<h1>Contributors</h1>
+<p class="lead">These are the people who have contributed to CAVE Language.</p>
+{% if contributors %}
+<ul class="list-group">
+    {% for contributor in contributors %}
+    <li class="list-group-item">
+        <div class="media">
+            <div class="media-left">
+                <img src="{{ contributor.pic }}" class="contributor-img">
+            </div>
+            <div class="media-body">
+                <h4>{{ contributor }}</h4>
+                {% if contributor.twitter %}
+                Twitter: <a href="https://twitter.com/{{ contributor.twitter }}">{{ contributor.twitter }}</a><br/>
+                {% endif %}
+                {% if contributor.website %}
+                Website: <a href="{{ contributor.website }}">{{ contributor.website }}</a><br/>
+                {% endif %}
+                {% if contributor.bio %}
+                {{ contributor.bio|safe }}
+                {% endif %}
+            </div>
+        </div>
+    </li>
+    {% endfor %}
+</ul>
+{% endif %}
+{% endblock content %}
