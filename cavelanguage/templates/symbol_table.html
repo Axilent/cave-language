@@ -7,7 +7,7 @@
     {% for symbol in symbols %}
     <tr>
         <td><img src="{{ symbol.url }}"></td>
-        <td><a href="/symbol/{{ symbol.slug }}/"><strong>{{ symbol.name }}</strong></a></td>
+        <td><a href="/symbol/{{ symbol.slug }}/"><strong>{% if symbol.proposed %}<em>{% endif %}{{ symbol.name }}{% if symbol.proposed %}</em>{% endif %}</strong></a></td>
         <td>{{ symbol.description|safe }}</td>
     </tr>
     {% endfor %}

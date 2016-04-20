@@ -57,6 +57,7 @@ class Symbol(models.Model,ACEContent):
     categories = models.ManyToManyField(Category,related_name='symbols')
     url = models.URLField(null=True,max_length=500)
     description = models.TextField(blank=True,null=True)
+    proposed = models.BooleanField(default=False)
     
     def __unicode__(self):
         return self.name
@@ -69,6 +70,17 @@ class Symbol(models.Model,ACEContent):
     
     collection_prop = property(_get_collection,_set_collection)
     
+    def _get_proposed(self):
+        return 'Proposed' if self.proposed else 'Accepted'
+    
+    def _set_proposed(self,value):
+        if value == 'Proposed':
+            self.proposed = True
+        else:
+            self.proposed = False
+    
+    proposed_prop = property(_get_proposed,_set_proposed)
+    
     class ACE:
         content_type = 'Symbol'
         field_map = {
@@ -78,6 +90,7 @@ class Symbol(models.Model,ACEContent):
             'url':'url',
             'slug':'slug',
             'description':'description',
+            'proposed':'proposed_prop',
         }
     
     class Meta:

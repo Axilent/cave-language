@@ -18,6 +18,10 @@
         <h1>{{ symbol.name }}</h1>
         <table class="table">
             <tr>
+                <td>Status</td>
+                <td><strong>{{ symbol.proposed|yesno:"Proposed,Accepted" }}</strong></td>
+            </tr>
+            <tr>
                 <td>Collection</td>
                 <td><a href="/collection/{{ symbol.collection.slug }}/"><strong>{{ symbol.collection.name }}</strong></a></td>
             </tr>
