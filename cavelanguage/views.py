@@ -35,7 +35,7 @@ def symbol(request,slug):
     """ 
     Shows the symbol.
     """
-    sym = Symbol.objects.active().get(slug=slug)
+    sym = Symbol.objects.get(slug=slug)
     return {'symbol':sym,'location':'symbol_library'}
 
 @template('collection.html')
