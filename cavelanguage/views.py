@@ -16,12 +16,12 @@ def symbol_library(request):
     """ 
     The main symbol library.
     """
-    connector_symbols = Symbol.objects.filter(collection__name='Core',categories__name='Connectors')
-    data_symbols = Symbol.objects.filter(collection__name='Core',categories__name='Data')
-    context_symbols = Symbol.objects.filter(collection__name='Core',categories__name='Context')
-    conditional_symbols = Symbol.objects.filter(collection__name='Core',categories__name='Conditionals')
-    mode_symbols = Symbol.objects.filter(collection__name='Core',categories__name='Modes')
-    container_symbols = Symbol.objects.filter(collection__name='Core',categories__name='Containers')
+    connector_symbols = Symbol.objects.active().filter(collection__name='Core',categories__name='Connectors')
+    data_symbols = Symbol.objects.active().filter(collection__name='Core',categories__name='Data')
+    context_symbols = Symbol.objects.active().filter(collection__name='Core',categories__name='Context')
+    conditional_symbols = Symbol.objects.active().filter(collection__name='Core',categories__name='Conditionals')
+    mode_symbols = Symbol.objects.active().filter(collection__name='Core',categories__name='Modes')
+    container_symbols = Symbol.objects.active().filter(collection__name='Core',categories__name='Containers')
     return {'location':'symbol_library',
             'connector_symbols':connector_symbols,
             'data_symbols':data_symbols,
@@ -35,7 +35,7 @@ def symbol(request,slug):
     """ 
     Shows the symbol.
     """
-    sym = Symbol.objects.get(slug=slug)
+    sym = Symbol.objects.active().get(slug=slug)
     return {'symbol':sym,'location':'symbol_library'}
 
 @template('collection.html')

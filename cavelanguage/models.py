@@ -47,6 +47,16 @@ class SymbolCategoryFieldConverter(object):
     def to_ace(self,local_model):
         return [category.name for category in local_model.categories.all()]
 
+class SymbolManager(models.Manager):
+    """
+    Manager for Symbol model.
+    """
+    def active(self):
+        """
+        Gets active symbols.
+        """
+        return self.filter(removed=False)
+
 class Symbol(models.Model,ACEContent):
     """
     A diagram symbol.
@@ -59,6 +69,8 @@ class Symbol(models.Model,ACEContent):
     description = models.TextField(blank=True,null=True)
     proposed = models.BooleanField(default=False)
     removed = models.BooleanField(default=False)
+    
+    objects = SymbolManager()
     
     def __unicode__(self):
         return self.name
