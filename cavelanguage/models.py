@@ -58,6 +58,7 @@ class Symbol(models.Model,ACEContent):
     url = models.URLField(null=True,max_length=500)
     description = models.TextField(blank=True,null=True)
     proposed = models.BooleanField(default=False)
+    removed = models.BooleanField(default=False)
     
     def __unicode__(self):
         return self.name
@@ -76,6 +77,9 @@ class Symbol(models.Model,ACEContent):
     def _set_proposed(self,value):
         if value == 'Proposed':
             self.proposed = True
+        elif value == 'Removed':
+            self.proposed = False
+            self.removed = True
         else:
             self.proposed = False
     
