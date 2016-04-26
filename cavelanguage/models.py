@@ -15,6 +15,13 @@ class Collection(models.Model):
     
     def __unicode__(self):
         return self.name
+    
+    @property
+    def active_symbols(self):
+        """
+        Returns active symbols.
+        """
+        return self.symbols.filter(removed=False)
 
 class Category(models.Model):
     """
@@ -26,6 +33,13 @@ class Category(models.Model):
     
     def __unicode__(self):
         return self.name
+    
+    @property
+    def active_symbols(self):
+        """
+        Returns active symbols.
+        """
+        return self.symbols.filter(removed=False)
     
     class Meta:
         unique_together = (('collection','name'),)

@@ -12,7 +12,7 @@
 </ol>
 <h4>{{ category.collection.name }}</h4>
 <h1>{{ category.name }}</h1>
-{% with category.symbols.all as symbols %}
+{% with category.active_symbols as symbols %}
 {% include 'symbol_table.html' %}
 {% endwith %}
 {% endblock content %}

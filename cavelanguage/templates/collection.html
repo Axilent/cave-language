@@ -22,7 +22,7 @@
 </ul>
 {% endif %}
 <h3>Symbols</h3>
-{% with collection.symbols.all as symbols %}
+{% with collection.active_symbols as symbols %}
 {% include 'symbol_table.html' %}
 {% endwith %}
 {% endblock content %}
