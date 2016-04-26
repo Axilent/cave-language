@@ -19,7 +19,15 @@
         <table class="table">
             <tr>
                 <td>Status</td>
-                <td><strong>{{ symbol.proposed|yesno:"Proposed,Accepted" }}</strong></td>
+                <td>
+                    {% if symbol.removed %}
+                    <div class="alert alert-danger">
+                        <strong>Removed</strong>
+                    </div>
+                    {% else %}
+                    <strong>{{ symbol.proposed|yesno:"Proposed,Accepted" }}</strong>
+                    {% endif %}
+                </td>
             </tr>
             <tr>
                 <td>Collection</td>
