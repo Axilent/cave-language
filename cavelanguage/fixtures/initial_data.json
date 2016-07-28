@@ -1,6 +1,7 @@
 [{"pk":1,"model":"cavelanguage.Collection","fields":{"name":"Core","slug":"core"}},
  {"pk":2,"model":"cavelanguage.Collection","fields":{"name":"Data Processing","slug":"data-processing"}},
  {"pk":3,"model":"cavelanguage.Collection","fields":{"name":"Logic","slug":"logic"}},
+ {"pk":4,"model":"cavelanguage.Collection","fields":{"name":"Ethics","slug":"ethics"}},
 
  {"pk":1,"model":"cavelanguage.Category","fields":{"collection":1,"name":"Data","slug":"data"}},
  {"pk":2,"model":"cavelanguage.Category","fields":{"collection":1,"name":"Context","slug":"context"}},
