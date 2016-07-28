@@ -22,13 +22,17 @@ def symbol_library(request):
     conditional_symbols = Symbol.objects.active().filter(collection__name='Core',categories__name='Conditionals')
     mode_symbols = Symbol.objects.active().filter(collection__name='Core',categories__name='Modes')
     container_symbols = Symbol.objects.active().filter(collection__name='Core',categories__name='Containers')
+    
+    extensions = Collection.objects.exclude(name='Core')
+    
     return {'location':'symbol_library',
             'connector_symbols':connector_symbols,
             'data_symbols':data_symbols,
             'context_symbols':context_symbols,
             'conditional_symbols':conditional_symbols,
             'mode_symbols':mode_symbols,
-            'container_symbols':container_symbols}
+            'container_symbols':container_symbols,
+            'extensions':extensions}
 
 @template('symbol.html')
 def symbol(request,slug):

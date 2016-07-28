@@ -9,7 +9,7 @@
   <li class="active">Symbol Library</li>
 </ol>
 <h1>Symbol Library</h1>
-<p class="lead">The <strong>CAVE Language</strong> library is divided between the Core library and a series of extensions. The extensions are meant for more specialized purposes, and are kept out of the core because they are less likely to be of use to everyone.</p>
+<p class="lead">The <strong>CAVE Language</strong> library is divided between the Core library and a series of <a href="#extensions">extensions</a>. The extensions are meant for more specialized purposes, and are kept out of the core because they are less likely to be of use to everyone.</p>
 <hr/>
 <h2>Core Collection</h2>
 <h3>Connector Symbols</h3>
@@ -42,4 +42,10 @@
 {% with container_symbols as symbols %}
 {% include 'symbol_table.html' %}
 {% endwith %}
+<hr/>
+<a name="extensions"></a><h2>Extensions</h2>
+{% for extension in extensions %}
+<h4><a href="/collection/{{ extension.slug }}/">{{ extension.name }}</a></h4>
+<p>{{ extension.description }}</p>
+{% endfor %}
 {% endblock content %}
