@@ -1,3 +1,5 @@
+{% load staticfiles %}
+
 <table class="table table-striped">
     <tr>
         <th>Icon</th>
@@ -6,7 +8,9 @@
     </tr>
     {% for symbol in symbols %}
     <tr>
-        <td><img src="{{ symbol.url }}"></td>
+        {% with 'symbols/'|add:symbol.slug|add:'.png' as symbol_image %}
+        <td><img src="{% static symbol_image %}"></td>
+        {% endwith %}
         <td><a href="/symbol/{{ symbol.slug }}/"><strong>{% if symbol.proposed %}<em>{% endif %}{{ symbol.name }}{% if symbol.proposed %}</em>{% endif %}</strong></a></td>
         <td>{{ symbol.description|safe }}</td>
     </tr>
