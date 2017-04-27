@@ -12,7 +12,9 @@
 </ol>
 <div class="media">
     <div class="media-left">
-        <img class="media-object" src="{{ symbol.url }}">
+        {% with 'symbols/'|add:symbol.slug|add:'.png' as symbol_image %}
+        <img class="media-object" src="{% static symbol_image %}">
+        {% endwith %}
     </div>
     <div class="media-body">
         <h1>{{ symbol.name }}</h1>
